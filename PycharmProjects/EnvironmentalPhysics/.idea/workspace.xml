@@ -10,7 +10,12 @@
   <component name="FavoritesManager">
     <favorites_list name="EnvironmentalPhysics" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/SpaceDebris" />
+    <option name="UPDATE_TYPE" value="MERGE" />
+  </component>
   <component name="ProjectId" id="1VpoBSL9n5FJSn0AdragreguqWh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -114,6 +119,14 @@
       <screen x="70" y="27" width="1850" height="1053" />
     </state>
     <state width="1827" height="275" key="GridCell.Tab.0.right/70.27.1850.1053@70.27.1850.1053" timestamp="1578239464605" />
+    <state x="653" y="199" width="662" height="722" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579389142194">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="653" y="199" width="662" height="722" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/70.27.1850.1053@70.27.1850.1053" timestamp="1579389142194" />
+    <state x="763" y="473" width="464" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579389005789">
+      <screen x="70" y="27" width="1850" height="1053" />
+    </state>
+    <state x="763" y="473" width="464" height="167" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/70.27.1850.1053@70.27.1850.1053" timestamp="1579389005789" />
     <state x="658" y="259" key="search.everywhere.popup" timestamp="1578309498843">
       <screen x="70" y="27" width="1850" height="1053" />
     </state>

@@ -4,7 +4,7 @@ import numpy as np
 from math import exp
 import os, sys
 
-
+file = open("data.txt", "w")
 #----------------------------------------------Is scene launched ? -----------------------------------------------------
 
 is_launched = False
@@ -40,9 +40,10 @@ class Debris():
         self.gravity_force = - G * self.mass * self.mass / mag2( self.position ) * self.position
         self.acceleration = ( self.gravity_force / self.mass  )
         self.past_position = self.position
+        self.add_force = vec(0.0,0.0,0.0)
 
 
-    def launchCamera():
+    def launchCamera(self):
          self.obj = sphere( pos=self.position,
                vel=self.velocity,
                acc=self.acceleration,
@@ -57,7 +58,7 @@ class Debris():
         if(mag(self.position) > RE):
             #   Forces   #
             self.gravity_force =  - G * self.mass * ME / mag2( self.position ) * self.position / mag(self.position)
-            self.acceleration = (self.gravity_force - self.drag() ) / self.mass
+            self.acceleration = (self.gravity_force - self.drag() - add_force) / self.mass
             #   vectors   #
             self.velocity = self.velocity + self.acceleration * dt
             Debris_past_pos = self.position
@@ -87,7 +88,7 @@ class Debris():
 
         #   Change pressure from kPa to Pa and temperature from C to K   #
         temp += 272.15
-        #p *= 1000
+        p *= 1000
 
         rho = p/(temp * 287.058 )
         A = 3.14 * (self.radius ** 2)
@@ -160,35 +161,32 @@ if is_launched:
     scene.camera.axis = vec( -1.91006e8, -1.60134e8, -6.90157e8 )
 
 
-h = int(float(sys.argv[1]))
+
+height_list = [-10000]#, 45000,50000]
+debris_list = []
+speed_list = [5875]#,5750,5800, 5810, 5820, 5830, 5840, 5850, 5860, 5870, 5880, 5890]
+force_list[vec(0,0,10)]
+#for h in height_list:
+h = 3000000
 v_first = (G * ME / (RE + h) )**(1 / 2)
-debris_1 = Debris(10, 3e4, vec(0, 0, RE + h), vec(v_first , 0, 0))
-val = 0
-is_min = False
-i=0
-while True:
-    i+=1
+print(v_first)
+
+for v in force_list:
+    h_1 = vec(0.0, 0.0, float(RE + h))
+    v_2 = vec(v_first , 0.0, 0.0)
+    debris_list.append(Debris(10, 3e4, h_1, v_2))
+    debris_list[-1].add_force = v
     if is_launched:
-        rate( 10000000 )
-    if i == 10000:
-        i = 0
-
-    if mag(debris_1.position) > val and is_min:
-        debris_1.print_val(4)
-        print(str(sec2day(t)) + "\n")
-    #debris_1.print_val(3)
-    if mag(debris_1.position) < val:
-        is_min = True
-    else:
-        is_min = False
-
-
-
-    val = mag(debris_1.position)
+        debris_list[-1].launchCamera()
+while True:
+  if len(debris_list) == 0:
+        break
+  for d in debris_list:
+    if d.move(dt):
+        file.write(str(t) + "\n")
+        debris_list.remove(d)
     if is_launched:
         Earth.rotate( angle=theta, origin=Earth.pos, axis=vec( 0, 1, 0 ) )
-    if debris_1.move(dt):
-        break
     t += dt
 
-print(t)
+file.close()
